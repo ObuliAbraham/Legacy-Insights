@@ -402,23 +402,23 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Responsive Design */
+/* Mobile Navigation */
 @media (max-width: 768px) {
     .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
-        height: calc(100vh - 70px);
         background: var(--white);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        transition: 0.3s ease;
+        padding: 1rem 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .nav-links.active {
-        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .nav-links a {
@@ -428,7 +428,17 @@ footer {
 
     .hamburger {
         display: flex;
-        z-index: 1001;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: var(--primary-color);
+        transition: 0.3s;
     }
 
     .hamburger.active span:nth-child(1) {

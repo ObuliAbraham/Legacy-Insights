@@ -7,28 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Nav links element:', navLinks);
 
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent event bubbling
-            console.log('Hamburger clicked');
+        hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('active') && 
-                !hamburger.contains(e.target) && 
-                !navLinks.contains(e.target)) {
-                console.log('Clicking outside - closing menu');
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
         });
 
         // Close menu when clicking a link
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                console.log('Link clicked - closing menu');
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
             });
