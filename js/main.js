@@ -1,29 +1,42 @@
 // Mobile Navigation Toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
 
-if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+    console.log('Hamburger element:', hamburger);
+    console.log('Nav links element:', navLinks);
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-        }
-    });
-
-    // Close menu when clicking a link
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event bubbling
+            console.log('Hamburger clicked');
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
         });
-    });
-}
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && 
+                !hamburger.contains(e.target) && 
+                !navLinks.contains(e.target)) {
+                console.log('Clicking outside - closing menu');
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                console.log('Link clicked - closing menu');
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    } else {
+        console.error('Mobile navigation elements not found!');
+    }
+});
 
 // Smooth Scrolling for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
