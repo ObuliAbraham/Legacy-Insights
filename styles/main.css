@@ -12,12 +12,16 @@
     --text-color: #333;
     --light-bg: #f5f6fa;
     --white: #ffffff;
+    --blue-bg: #e3f2fd;
+    --blue-gradient: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    --dark-blue-bg: #1976d2;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+    background: var(--blue-bg);
 }
 
 .container {
@@ -148,7 +152,24 @@ body {
 /* About Section */
 .about {
     padding: 5rem 0;
-    background: var(--light-bg);
+    background: var(--blue-gradient);
+    position: relative;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="%23ffffff" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+}
+
+.about .container {
+    position: relative;
+    z-index: 2;
 }
 
 .about h2 {
@@ -169,6 +190,7 @@ body {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--secondary-color);
 }
 
 .core-values {
@@ -189,6 +211,7 @@ body {
     text-align: center;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    border-top: 3px solid var(--secondary-color);
 }
 
 .value-card:hover {
@@ -198,22 +221,45 @@ body {
 .value-card i {
     font-size: 2.5rem;
     color: var(--secondary-color);
-    margin-bottom: 1rem;
 }
 
 /* Services Section */
 .services {
     padding: 5rem 0;
+    background: var(--blue-bg);
+    position: relative;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(52, 152, 219, 0.1) 50%, transparent 70%);
+    pointer-events: none;
+}
+
+.services .container {
+    position: relative;
+    z-index: 2;
 }
 
 .service-section {
     margin-bottom: 4rem;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--secondary-color);
 }
 
 .service-section h3 {
     color: var(--primary-color);
     margin-bottom: 2rem;
     text-align: center;
+    font-size: 2rem;
 }
 
 .service-grid {
@@ -223,16 +269,19 @@ body {
 }
 
 .service-card {
-    background: var(--white);
+    background: var(--blue-bg);
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    border-color: var(--secondary-color);
+    background: var(--white);
 }
 
 .service-card i {
@@ -244,7 +293,24 @@ body {
 /* Contact Section */
 .contact {
     padding: 5rem 0;
-    background: var(--light-bg);
+    background: var(--blue-gradient);
+    position: relative;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    pointer-events: none;
+}
+
+.contact .container {
+    position: relative;
+    z-index: 2;
 }
 
 .contact-header {
@@ -277,10 +343,12 @@ body {
     text-align: center;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    border-top: 4px solid var(--secondary-color);
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
 }
 
 .contact-card i {
@@ -299,6 +367,7 @@ body {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border: 2px solid var(--secondary-color);
 }
 
 .form-group {
